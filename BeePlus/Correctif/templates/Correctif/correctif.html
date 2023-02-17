@@ -1,0 +1,23 @@
+
+{% extends 'Correctif/main.html' %}
+{% load static %}
+{% block content %}
+<div class="row">
+    <div class="col-3">
+        <img src="{% static '/images/beeplus.png' %}" alt="Logo Bee Plus" style = "height: 150px;margin-left: -30px;">
+    </div>
+    <div class="col-6" style="margin-top: 80px;">
+        <h1 style="color: rgb(0, 64, 135); margin-bottom: 150px;">Correctif</h1>
+       
+        
+        <div class="d-grid gap-2">
+            <a class="btn btn-outline-success btn-lg" type="button" href = "{% url 'modifier_avis' %}"><i class="bi bi-plus-circle-fill"></i>&nbsp;&nbsp;Modifier avis</a>
+            <a class="btn btn-outline-success btn-lg" type="button" href = "{% url 'bon_pour_ot' %}"><i class="bi bi-check-circle"></i>&nbsp;&nbsp;Bon pour OT</a>
+            <a class="btn btn-outline-success btn-lg" type="button" href = "{% url 'sqcdp' %}"><i class="bi bi-node-plus-fill"></i>&nbsp;&nbsp;SQCDP</a>
+        </div>
+    </div>
+    <div class="col-3">
+        <img src="{% static '/images/logo-actemium.svg' %}" alt="Logo Bee Plus" style = "height: 50px;margin-top: 60px;">
+    </div>
+</div>
+{% endblock %}

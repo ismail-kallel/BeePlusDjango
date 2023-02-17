@@ -1,0 +1,109 @@
+
+{% load static %}
+<html>
+    <head>
+        <title>Modifier Avis</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css" >
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css" >
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+    </head>
+    <body style="background-color: rgb(238, 238, 238);">
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-1">
+                    <img src="{% static '/images/beeplus.png' %}" alt="Logo Bee Plus" style = "height: 150px;margin-left: -30px;">
+                </div>
+                <div class="col-10" style="margin-top: 150px;">
+                    <div class="card">
+                        <div class="card-header">
+                            <br>
+                            <h2 style="color: rgb(36,81,140); text-align: center;">Liste des avis en cours</h2>
+                            <br>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive text-nowrap">
+                                <table id="example" class="table text-nowrap table-hover" style="width:100%">
+                                    <thead>
+                                        <tr >
+                                            <th>Avis</th>
+                                            <th>Créé le </th>
+                                            <th>Avis, heure</th>
+                                            <th>Arret</th>
+                                            <th>Description</th>
+                                            <th>Equipement</th>
+                                        
+                                            <th>Section</th>
+                                            <th>Ordre</th>
+                                            <th>Grpe gest PM</th>
+                                            <th>Centre de couts</th>
+                                            
+                                            <th>Créé par</th>
+                        
+                                        </tr>
+                                        
+                        
+                                    </thead>
+                                    <tbody>
+                                        {% for i in df.itertuples %}
+                                        
+                                            <tr class="clickable-row" data-href = "{% url 'avis_form'  i.Avis %}" style="cursor : pointer;">
+                                                <td>{{i.Avis}}</td>
+                                                <td>{{i.Cree_le}}</td>
+                                                <td>{{i.Avis_heure}}</td>
+                                                <td>{{i.Arret}}</td>
+                                                <td>{{i.Description}}</td>
+                                                <td>{{i.Equipement}}</td>
+                                                <td>{{i.SECTION}}</td>
+                                                <td>{{i.Ordre}}</td>
+                                                <td>{{i.Grpe_gest_PM}}</td>
+                                                <td>{{i.Centre_de_couts}}</td>
+                                                <td>{{i.Cree_par}}</td>
+                                                
+
+                                            </tr>
+                                          
+                                        {% endfor %}
+                                        
+                                    </tbody>
+                                    
+                                    
+                                </table>
+                                <br>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                </div>
+                <div class="col-1">
+                    <img src="{% static '/images/logo-actemium.svg' %}" alt="Logo Bee Plus" style = "height: 50px;margin-top: 60px;margin-left: -150px;">
+                </div>
+            </div>
+        </div>  
+        
+        <script language="JavaScript" type="text/javascript" src="{% static '/JS/table.js' %}"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
+        
+
+
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+        $(document).ready(function($) {
+            $(".clickable-row").click(function() {
+                window.location = $(this).data("href");
+            });
+        });
+    </script>
+</html>
